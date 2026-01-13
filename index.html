@@ -15,16 +15,16 @@
       justify-content: center;
     }
 
-    /* Marco tipo foto, tamaño normal */
+    /* Marco tipo foto */
     .frame {
-      width: 340px;           /* TAMAÑO FOTO */
-      max-width: 90vw;        /* se adapta en celular */
+      position: relative;
+      width: 340px;
+      max-width: 90vw;
       aspect-ratio: 1 / 1;
       background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
       box-shadow: 0 0 25px rgba(0,0,0,0.6);
     }
 
@@ -33,6 +33,33 @@
       max-height: 100%;
       object-fit: contain;
     }
+
+    /* Botón play */
+    .play-btn {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .play-btn::before {
+      content: "";
+      margin-left: 5px;
+      width: 0;
+      height: 0;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 22px solid white;
+    }
+
+    .play-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
   </style>
 </head>
 
@@ -40,15 +67,19 @@
 
   <div class="frame">
     <img src="imagen.jpg" alt="Invitación">
+    <div class="play-btn" id="play"></div>
   </div>
 
   <audio id="audio" src="musica.mp3"></audio>
 
   <script>
     const audio = document.getElementById("audio");
-    document.body.addEventListener("click", () => {
-      if (audio.paused) audio.play();
-    }, { once: true });
+    const playBtn = document.getElementById("play");
+
+    playBtn.addEventListener("click", () => {
+      audio.play();
+      playBtn.style.display = "none"; // ocultar botón
+    });
   </script>
 
 </body>
