@@ -3,20 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Tarjeta musical</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Marco cuadrado tipo foto */
+    .frame {
+      width: 90vmin;
+      aspect-ratio: 1 / 1;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    /* Imagen real, sin recorte */
+    .frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* CLAVE */
+    }
+  </style>
 </head>
 
-<body style="margin:0; text-align:center; background:black; color:white;">
+<body>
 
-  <img src="imagen.jpg" style="max-width:100%; height:auto;">
+  <div class="frame">
+    <img src="imagen.jpg" alt="Invitación">
+  </div>
 
   <audio id="audio" src="musica.mp3"></audio>
 
   <script>
-    document.body.addEventListener("click", function () {
-      const audio = document.getElementById("audio");
-      if (audio.paused) {
-        audio.play();
-      }
+    const audio = document.getElementById("audio");
+
+    document.body.addEventListener("click", () => {
+      if (audio.paused) audio.play();
     }, { once: true });
   </script>
 
