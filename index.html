@@ -5,13 +5,21 @@
   <title>Tarjeta musical</title>
 </head>
 
-<body style="margin:0; text-align:center; background:black;">
+<body style="margin:0; text-align:center; background:black; color:white;">
 
-  <img src="imagen.jpg"
-       style="max-width:100%; height:auto; cursor:pointer;"
-       onclick="document.getElementById('audio').play();">
+  <img src="imagen.jpg" style="max-width:100%; height:auto;">
 
   <audio id="audio" src="musica.mp3"></audio>
 
+  <script>
+    document.body.addEventListener("click", function () {
+      const audio = document.getElementById("audio");
+      if (audio.paused) {
+        audio.play();
+      }
+    }, { once: true });
+  </script>
+
 </body>
 </html>
+
