@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Imagen con Música</title>
+  <meta charset="UTF-8">
+  <title>Tarjeta musical</title>
 </head>
-<body style="margin:0; padding:0; text-align:center;">
-<img id="imagen" src="tu-imagen.jpg" style="max-width:100%; cursor:pointer;">
-<audio id="audio" src="tu-audio.mp3"></audio>
 
-<script>
-document.getElementById("imagen").onclick = function() {
-  var audio = document.getElementById("audio");
-  if(audio.paused) audio.play();
-  else audio.pause();
-}
-</script>
+<body style="margin:0; text-align:center; background:black;">
+
+  <img src="imagen.jpg"
+       style="max-width:100%; height:auto; cursor:pointer;"
+       onclick="document.getElementById('audio').play();">
+
+  <audio id="audio" src="musica.mp3"></audio>
 
 </body>
 </html>
